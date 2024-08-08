@@ -2,6 +2,28 @@ function hover(box) {
     box.style.backgroundColor = "black"; // Adds on the existing one. Don't do setAttr as it removes the previously set background color.
 }
 
+function generateGrid() {
+    let numberOfBoxes;
+    numberOfBoxes = Number(input.value);
+    if (numberOfBoxes > 100) {
+        alert("I am sorry friend! The maximum limit is 100.");
+    }
+    else {
+        while (grid.firstChild) {
+            grid.removeChild(grid.firstChild);
+          }
+        for (let i = 0; i < numberOfBoxes ** 2; i++) {
+            const box = document.createElement("div");
+            box.setAttribute("style", `height: ${(100 / numberOfBoxes)}%; width: ${(100 / numberOfBoxes)}%; outline: 1px solid black;`);
+            box.addEventListener("mouseenter", function() {
+                hover(box);
+            });
+            grid.appendChild(box);
+        }
+    }
+    
+}
+
 const grid = document.querySelector("#grid");
 
 for (let i = 0; i < 256; i++) {
@@ -14,3 +36,17 @@ for (let i = 0; i < 256; i++) {
     });
     grid.appendChild(box);
 }
+
+
+const promptSection = document.createElement("div");
+const label = document.createElement("label");
+const input = document.createElement("input");
+const button = document.createElement("button");
+label.textContent = "Enter number of squares";
+input.setAttribute("type", "text");
+button.textContent = "Click To Generate Grid";
+button.addEventListener("click", generateGrid);
+promptSection.appendChild(label);
+promptSection.appendChild(input);
+promptSection.appendChild(button);
+document.body.insertBefore(promptSection, grid);
