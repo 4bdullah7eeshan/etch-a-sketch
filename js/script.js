@@ -1,5 +1,9 @@
 function hover(box) {
-    box.style.backgroundColor = "black"; // Adds on the existing one. Don't do setAttr as it removes the previously set background color.
+    let red, green, blue;
+    red = Math.floor(Math.random() * 256);
+    green = Math.floor(Math.random() * 256);
+    blue = Math.floor(Math.random() * 256);
+    box.style.backgroundColor = `rgb(${red} ${green} ${blue})`;
 }
 
 function generateGrid() {
