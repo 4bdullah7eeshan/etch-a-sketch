@@ -1,2 +1,5 @@
-# etch-a-sketch
-A browser version of something between a sketchpad and an Etch-A-Sketch.
+# Etch A Sketch
+
+## About 
+
+This is a browser version of something between a sketchpad and an [Etch-A-Sketch](https://en.wikipedia.org/wiki/Etch_A_Sketch).
