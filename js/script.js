@@ -8,7 +8,7 @@ function hover(box) {
 
 function generateGrid() {
     let numberOfBoxes;
-    numberOfBoxes = Number(input.value);
+    numberOfBoxes = input.value;
     if (numberOfBoxes > 100) {
         alert("I am sorry friend! The maximum limit is 100.");
     }
@@ -28,7 +28,30 @@ function generateGrid() {
     
 }
 
-const grid = document.querySelector("#grid");
+
+
+const hero = document.createElement("div");
+hero.id = "hero";
+
+const mainHeading = document.createElement("h1");
+mainHeading.textContent = "Etch-A-Sketch";
+
+hero.appendChild(mainHeading);
+
+
+const websiteDescription = document.createElement("p");
+websiteDescription.textContent = "Glide your cursor over the grid to leave trailing marks.";
+websiteDescription.setAttribute("class", "description");
+hero.appendChild(websiteDescription);
+
+document.body.appendChild(hero);
+
+const main = document.createElement("div");
+main.id = "main";
+
+
+const grid = document.createElement("div");
+grid.id = "grid";
 
 for (let i = 0; i < 256; i++) {
     const box = document.createElement("div");
@@ -41,16 +64,53 @@ for (let i = 0; i < 256; i++) {
     grid.appendChild(box);
 }
 
+main.appendChild(grid);
+
 
 const promptSection = document.createElement("div");
+promptSection.id = "prompt-section";
+
 const label = document.createElement("label");
-const input = document.createElement("input");
-const button = document.createElement("button");
-label.textContent = "Enter number of squares";
-input.setAttribute("type", "text");
-button.textContent = "Click To Generate Grid";
-button.addEventListener("click", generateGrid);
+label.id = "label";
+label.textContent = "Change number of squares";
+
 promptSection.appendChild(label);
+
+const input = document.createElement("input");
+input.id = "input";
+input.setAttribute("type", "number");
+
 promptSection.appendChild(input);
+
+const button = document.createElement("button");
+button.textContent = "Go";
+button.addEventListener("click", generateGrid);
+
 promptSection.appendChild(button);
-document.body.insertBefore(promptSection, grid);
+
+main.appendChild(promptSection);
+
+document.body.appendChild(main);
+
+
+const footer = document.createElement("div");
+footer.id = "footer";
+
+const footerText = document.createElement("p");
+footerText.textContent = "Copyright © Abdullah Zeeshan 2024";
+
+footer.appendChild(footerText);
+
+const footerLink = document.createElement("a");
+footerLink.href = "https://github.com/4bdullah7eeshan/etch-a-sketch";
+footerLink.target = "_blank";
+footerLink.rel = "noopener noreferrer";
+
+const githubLogo = document.createElement("i");
+githubLogo.setAttribute("class", "fab fa-github");
+
+footerLink.appendChild(githubLogo);
+
+footer.appendChild(footerLink);
+
+document.body.appendChild(footer);
